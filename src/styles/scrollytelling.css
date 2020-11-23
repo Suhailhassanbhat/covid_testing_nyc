@@ -1,0 +1,111 @@
+/*
+
+Begin responsive design and scrollytelling
+
+*/
+
+svg {
+  display: flexbox;
+}
+
+/* Scrollytelling sections can be wider than the normal 700px width */
+.scrollytelling.story-body {
+  max-width: 960px;
+}
+
+.scrollytelling {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Everything inside of scrollytelling gets normal full width... */
+.scrollytelling > * {
+  flex-basis: 100%;
+  flex-shrink: 0;
+}
+
+/* ...except the .steps and .chart! They'll share a row, sometimes */
+.scrollytelling > .steps,
+.scrollytelling > .chart {
+  flex-basis: 20%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+/* The bigger 'flex-grow' the more space it takes up */
+.scrollytelling > .chart {
+  flex-grow: 3;
+  overflow: hidden;
+}
+
+.scrollytelling .chart {
+  margin-right: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollytelling .chart svg {
+  margin: auto;
+}
+
+.scrollytelling .chart img {
+  width: 100wh;
+}
+
+.scrollytelling .step {
+  max-width: 30rem;
+  margin: 75% auto 0 auto;
+  margin-bottom: 80vh;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  border: solid #333 1px;
+  pointer-events: auto;
+  z-index: -1;
+}
+
+.scrollytelling .step *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.scrollytelling .step *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* This is a weird spacing fix */
+.scrollytelling .steps {
+  z-index: 10;
+  padding-bottom: 1vh;
+  pointer-events: none;
+}
+
+/* .scrollytelling .chart .short {
+  height: 150px;
+}
+
+.scrollytelling .chart .tall {
+  height: 100vh;
+} */
+
+
+/* This is the point where it collapses */
+@media (max-width:2000px) {
+  .scrollytelling > * {
+      flex-basis: 100% !important;
+  }
+  .scrollytelling .chart {
+      margin-right: 0;
+  }
+}
+
+/*
+
+End scrollytelling
+
+*/
